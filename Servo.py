@@ -7,6 +7,7 @@ class Servo(object):
 
     def __init__(self, rasp_pin, servo_model="mg955"):
 
+        GPIO.setmode(GPIO.BOARD)
         self._pulse_width = 0
         self._duty_cycle = 0
         self.s_model = ServoModel().get_model(servo_model)
