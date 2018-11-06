@@ -37,11 +37,11 @@ class Servo(object):
 
     def __get_pulse_width(self, angle):
 
-        self._pulse_width = self.s_model.m_pulse * angle + self.s_model.n_pulse
+        self._pulse_width = self.s_model.m_pulse * int(angle) + self.s_model.n_pulse
 
     def __get_duty_cycle(self):
 
-        return self._pulse_width * self.s_model.frequency
+        return self._pulse_width * self.s_model.frequency / 10.0
 
 
 if __name__ == "__main__":
@@ -50,3 +50,4 @@ if __name__ == "__main__":
     print("frequency: ", newservo.s_model.frequency)
     print("m_pulse: ", newservo.s_model.m_pulse)
     print("n_pulse: ", newservo.s_model.n_pulse)
+    print("Duty Cycle: ", newservo.move_angle(10))
