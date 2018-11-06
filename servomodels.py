@@ -11,30 +11,23 @@ class ServoModel:
 
 class ServoConstants:
 
-    def __init__(self):
+    def __init__(self, frequency, m_p, n_p):
 
-        self.frequency = 0
-        self.m_pulse = 0
-        self.n_pulse = 0
+        self.frequency = frequency
+        self.m_pulse = m_p
+        self.n_pulse = n_p
 
 
 class Mg955(ServoConstants):
 
     def __init__(self):
 
-        ServoConstants.__init__(self)
-
-        self.frequency = 50
-        self.m_pulse = 1 / 120
-        self.n_pulse = 1
+        ServoConstants.__init__(self, 50, 1 / 120, 1)
 
 
 class Sg90(ServoConstants):
 
     def __init__(self):
 
-        ServoConstants.__init__(self)
+        ServoConstants.__init__(self, 50, 1 / 180, 1)
 
-        self.frequency = 50
-        self.m_pulse = 1 / 180
-        self.n_pulse = 1

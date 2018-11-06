@@ -1,6 +1,6 @@
 
-from servopi.servomodels import ServoModel
-#import RPi.GPIO as GPIO
+from servomodels import ServoModel
+import RPi.GPIO as GPIO
 
 
 class Servo(object):
@@ -46,6 +46,6 @@ class Servo(object):
 if __name__ == "__main__":
 
     newservo = Servo(1)
-    print("frequency: {}\n", newservo.s_model.frequency)
-    print("m_pulse: {}\n", newservo.s_model.m_pulse)
-    print("n_pulse: {}\n", newservo.s_model.n_pulse)
+    print("frequency: ", newservo.s_model.frequency)
+    print("m_pulse: ", newservo.s_model.m_pulse)
+    print("n_pulse: ", newservo.s_model.n_pulse)
