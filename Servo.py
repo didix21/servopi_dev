@@ -7,12 +7,11 @@ class Servo(object):
 
     def __init__(self, rasp_pin, servo_model="mg955"):
 
-        self.__configure_pin(rasp_pin)
-        self.s_model = ServoModel().get_model(servo_model)
-        self.__configure_pwm()
-
         self._pulse_width = 0
         self._duty_cycle = 0
+        self.s_model = ServoModel().get_model(servo_model)
+        self.__configure_pin(rasp_pin)
+        self.__configure_pwm()
 
     def move_angle(self, angle):
 
