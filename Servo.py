@@ -8,7 +8,7 @@ class Servo(object):
     def __init__(self, rasp_pin, servo_model="mg955"):
 
         self._pulse_width = 0
-        self._duty_cycle = 0
+        self._duty_cycle = 7.5
         self.s_model = ServoModel().get_model(servo_model)
         self.__configure_pin(rasp_pin)
         self.__configure_pwm()
@@ -18,6 +18,8 @@ class Servo(object):
         self.__get_pulse_width(angle)
         self._duty_cycle = self.__get_duty_cycle()
         self._pwm.ChangeDutyCycle(self._duty_cycle)
+
+        return self._duty_cycle()
 
     def __configure_pwm(self):
 
