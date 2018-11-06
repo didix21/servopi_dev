@@ -17,7 +17,7 @@ class Servo(object):
     def move_angle(self, angle):
 
         self.__get_pulse_width(angle)
-        self.__get_duty_cycle()
+        self._duty_cycle = self.__get_duty_cycle()
         self._pwm.ChangeDutyCycle(self._duty_cycle)
 
     def __configure_pwm(self):
