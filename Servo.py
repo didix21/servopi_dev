@@ -19,7 +19,7 @@ class Servo(object):
         self._duty_cycle = self.__get_duty_cycle()
         self._pwm.ChangeDutyCycle(self._duty_cycle)
 
-        return self._duty_cycle()
+        return self._duty_cycle
 
     def __configure_pwm(self):
 
