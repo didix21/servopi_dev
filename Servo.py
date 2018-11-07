@@ -31,10 +31,6 @@ class Servo(object):
         self._pin = rasp_pin
         GPIO.setup(self._pin, GPIO.OUT)
 
-    def __set_duty_cycle_in_raspi(self):
-
-        self.__get_duty_cycle()
-
     def __get_pulse_width(self, angle):
 
         self._pulse_width = self.s_model.m_pulse * int(angle) + self.s_model.n_pulse
