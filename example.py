@@ -13,9 +13,8 @@ def main(argv):
     my_servo.move_angle(angle)
     print("Moving: ", angle)
     time.sleep(1)
-    GPIO.cleanup()
 
 
 if __name__ == "__main__":
 
-    main(sys.argv[1:])
+    main(sys.argv[1])
