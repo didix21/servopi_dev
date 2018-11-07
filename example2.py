@@ -36,7 +36,7 @@ def main(argv='0'):
     my_own_servo.move_angle(0)      # Move to position 0 º
     time.sleep(2)
 
-    my_desired_angle = int(argv)
+    my_desired_angle = int(argv[0])
     my_own_servo.move_angle(my_desired_angle)
 
 
