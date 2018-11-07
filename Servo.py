@@ -1,6 +1,7 @@
 
 from servomodels import ServoModel
 import RPi.GPIO as GPIO
+import time
 
 
 class Servo(object):
@@ -18,8 +19,9 @@ class Servo(object):
         self.__get_pulse_width(angle)
         self._duty_cycle = self.__get_duty_cycle()
         self._pwm.ChangeDutyCycle(self._duty_cycle)
-
-        return self._duty_cycle
+        time.sleep(self._pulse_width)
+        print("move_angle-Pulse Width", self._pulse_width)
+        print("move_angle-Duty Cycle: ", self._duty_cycle)
 
     def __configure_pwm(self):
 
@@ -31,13 +33,10 @@ class Servo(object):
         self._pin = rasp_pin
         GPIO.setup(self._pin, GPIO.OUT)
 
-    def __set_duty_cycle_in_raspi(self):
-
-        self.__get_duty_cycle()
-
     def __get_pulse_width(self, angle):
 
         self._pulse_width = self.s_model.m_pulse * int(angle) + self.s_model.n_pulse
+        print("__get_pulse_width-pulse_width: ", self._pulse_width)
 
     def __get_duty_cycle(self):
 

@@ -10,7 +10,7 @@ def main(argv):
     GPIO.setmode(GPIO.BOARD)
     angle = int(argv[0])
     my_servo = Servo(11, "Sg90")
-    print("Duty cycle = ", my_servo.move_angle(angle))
+    my_servo.move_angle(angle)
     print("Moving: ", angle)
     time.sleep(1)
     GPIO.cleanup()
