@@ -1,21 +1,45 @@
-import RPi.GPIO as GPIO    #Importamos la libreria RPi.GPIO
-import time                #Importamos time para poder usar time.sleep
 
-GPIO.setmode(GPIO.BOARD)   #Ponemos la Raspberry en modo BOARD
-GPIO.setup(11,GPIO.OUT)    #Ponemos el pin 21 como salida
-p = GPIO.PWM(11,50)        #Ponemos el pin 21 en modo PWM y enviamos 50 pulsos por segundo
-p.start(7.5)               #Enviamos un pulso del 7.5% para centrar el servo
+import RPi.GPIO as GPIO
+from Servo import Servo
+import time
+import sys
 
-try:
-    while True:      #iniciamos un loop infinito
 
-        p.ChangeDutyCycle(4.5)    #Enviamos un pulso del 4.5% para girar el servo hacia la izquierda
-        time.sleep(0.5)           #pausa de medio segundo
-        p.ChangeDutyCycle(10.5)   #Enviamos un pulso del 10.5% para girar el servo hacia la derecha
-        time.sleep(0.5)           #pausa de medio segundo
-        p.ChangeDutyCycle(7.5)    #Enviamos un pulso del 7.5% para centrar el servo de nuevo
-        time.sleep(0.5)           #pausa de medio segundo
+class MyTest(object):
 
-except KeyboardInterrupt:         #Si el usuario pulsa CONTROL+C entonces...
-    p.stop()                      #Detenemos el servo
-    GPIO.cleanup()                #Limpiamos los pines GPIO de la Raspberry y cerramos el script
+    def __init__(self, hello='', *args):
+
+        print(hello)
+        print("arg1", args[0])
+        print("arg2", args[1])
+        print("arg3", args[2])
+
+
+def main(argv='0'):
+
+    GPIO.setmode(GPIO.BOARD)
+
+    # Servo Parameters
+
+    raspberry_pin = 11
+    servo_model = 'MyOwn'
+
+    frequency = 50
+    max_angle = 180
+    min_pulse_width_in_millis = 1
+    args = (frequency, max_angle, min_pulse_width_in_millis)
+
+    my_own_servo = Servo(raspberry_pin, servo_model, *args)
+
+    my_own_servo.move_angle(180)    # Move to position 180 º
+    time.sleep(1)
+    my_own_servo.move_angle(0)      # Move to position 0 º
+    time.sleep(2)
+
+    my_desired_angle = int(argv)
+    my_own_servo.move_angle(my_desired_angle)
+
+
+if __name__ == "__main__":
+
+    main(sys.argv[1])
