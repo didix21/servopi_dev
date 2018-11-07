@@ -8,7 +8,7 @@ class ServoModel:
     @staticmethod
     def factory_models(servo_model, *args):
 
-        dict_of_models = {'mg955': Mg955(), 'sg90': Sg90(), '': Sg90(), 'MyOwn': MyOwn(*args)}
+        dict_of_models = {'mg955': Mg955(), 'sg90': Sg90(), '': Sg90(), 'myown': MyOwn(*args)}
 
         if (servo_model == 'MyOwn') and (len(args) < 3):
             raise IndexError("The size of args has to be 3: frequency, max_angle, min_pulse_in_millisec!")
