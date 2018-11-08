@@ -31,13 +31,13 @@ def main(argv='0'):
 
     my_own_servo = Servo(raspberry_pin, servo_model, *args)
 
-    my_own_servo.move_angle(180)    # Move to position 180 º
+    my_own_servo.write_angle(180)    # Move to position 180 º
     time.sleep(1)
-    my_own_servo.move_angle(0)      # Move to position 0 º
+    my_own_servo.write_angle(0)      # Move to position 0 º
     time.sleep(2)
 
     my_desired_angle = int(argv[0])
-    my_own_servo.move_angle(my_desired_angle)
+    my_own_servo.write_angle(my_desired_angle)
 
 
 if __name__ == "__main__":

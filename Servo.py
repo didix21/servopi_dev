@@ -20,12 +20,16 @@ class Servo(object):
 
         GPIO.cleanup(self.rasp_pin)
 
-    def move_angle(self, angle):
+    def write_angle(self, angle):
 
         self.__get_pulse_width(angle)
         self._duty_cycle = self.__get_duty_cycle()
         self._pwm.ChangeDutyCycle(self._duty_cycle)
         time.sleep(self._pulse_width / 1000)
+
+    def write_duty_cycle(self, duty_cycle):
+
+        self._pwm.ChangeDutyCycle(duty_cycle)
 
     def __configure_pwm(self):
 
@@ -52,4 +56,4 @@ if __name__ == "__main__":
     print("frequency: ", newservo.s_model.frequency)
     print("m_pulse: ", newservo.s_model.m_pulse)
     print("n_pulse: ", newservo.s_model.n_pulse)
-    print("Duty Cycle: ", newservo.move_angle(10))
+    print("Duty Cycle: ", newservo.write_angle(10))
