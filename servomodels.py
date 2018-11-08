@@ -21,7 +21,7 @@ class ServoConstants:
     def __init__(self, frequency, max_angle, min_pulse_in_millisec):
 
         self.frequency = frequency
-        self.m_pulse = 1 / max_angle
+        self.m_pulse = 2 / max_angle
         self.n_pulse = min_pulse_in_millisec
 
 
@@ -36,7 +36,7 @@ class Sg90(ServoConstants):
 
     def __init__(self):
 
-        ServoConstants.__init__(self, 50, 180, 1)
+        ServoConstants.__init__(self, 50, 180, 0.5)
 
 
 class MyOwn(ServoConstants):
