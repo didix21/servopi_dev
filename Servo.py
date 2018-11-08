@@ -25,6 +25,7 @@ class Servo(object):
         self.__get_pulse_width(angle)
         self._duty_cycle = self.__get_duty_cycle()
         self._pwm.ChangeDutyCycle(self._duty_cycle)
+        self.print_variables()
         time.sleep(self._pulse_width / 1000)
 
     def write_duty_cycle(self, duty_cycle):
@@ -49,6 +50,9 @@ class Servo(object):
 
         return self._pulse_width * self.s_model.frequency / 10.0
 
+    def print_variables(self):
+        print("Pulse Width: ", self._pulse_width)
+        print("Duty Cycle: ", self._duty_cycle)
 
 if __name__ == "__main__":
 
